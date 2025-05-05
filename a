@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mi Proyecto de Vida</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #eef2f5;
+      color: #333;
+    }
+
+    header {
+      background-color: #007acc;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    main {
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    h2 {
+      background-color: #007acc;
+      color: white;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 8px;
+    }
+
+    section {
+      margin-bottom: 20px;
+      background-color: #fff;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      display: none;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .activo {
+      display: block;
+    }
+
+    /* Chatbot */
+    #chatbot-container {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 300px;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      overflow: hidden;
+      font-size: 14px;
+    }
+
+    #chatbot-header {
+      background-color: #007acc;
+      color: white;
+      padding: 10px;
+      text-align: center;
+    }
+
+    #chatbot-messages {
+      height: 200px;
+      overflow-y: auto;
+      padding: 10px;
+    }
+
+    .message {
+      margin-bottom: 10px;
+    }
+
+    .user {
+      text-align: right;
+      color: #007acc;
+    }
+
+    .bot {
+      text-align: left;
+      color: #333;
+    }
+
+    #chatbot-input {
+      display: flex;
+      border-top: 1px solid #ccc;
+    }
+
+    #chatbot-input input {
+      flex: 1;
+      padding: 10px;
+      border: none;
+      outline: none;
+    }
+
+    #chatbot-input button {
+      padding: 10px;
+      background-color: #007acc;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Mi Proyecto de Vida</h1>
+    <p>Construyendo un futuro con propósito y acción</p>
+  </header>
+
+  <main>
+    <h2 onclick="toggle('economico')">💰 Estrategias Económicas</h2>
+    <section id="economico">
+      <ul>
+        <li>Ahorro mensual del 20% de ingresos</li>
+        <li>Inversión en fondos indexados a largo plazo</li>
+        <li>Crear un negocio de servicios digitales</li>
+        <li>Educación financiera continua</li>
+      </ul>
+    </section>
+
+    <h2 onclick="toggle('estudios')">📚 Planes de Estudio</h2>
+    <section id="estudios">
+      <ul>
+        <li>Terminar la carrera universitaria en 2026</li>
+        <li>Certificación en programación web</li>
+        <li>Curso de inglés avanzado (C1)</li>
+        <li>Leer un libro de desarrollo personal cada mes</li>
+      </ul>
+    </section>
+
+    <h2 onclick="toggle('social')">🤝 Servicios Sociales</h2>
+    <section id="social">
+      <ul>
+        <li>Participar en campañas de reforestación</li>
+        <li>Voluntariado en comedores comunitarios</li>
+        <li>Crear talleres gratuitos de habilidades digitales</li>
+        <li>Promover actividades deportivas en mi comunidad</li>
+      </ul>
+    </section>
+  </main>
+
+  <!-- Chatbot -->
+  <div id="chatbot-container">
+    <div id="chatbot-header">Asistente Virtual</div>
+    <div id="chatbot-messages"></div>
+    <div id="chatbot-input">
+      <input type="text" id="userInput" placeholder="Escribe tu pregunta..." />
+      <button onclick="sendMessage()">Enviar</button>
+    </div>
+  </div>
+
+  <script>
+    function toggle(id) {
+      const section = document.getElementById(id);
+      section.classList.toggle('activo');
+    }
+
+    function sendMessage() {
+      const input = document.getElementById('userInput');
+      const mensaje = input.value.trim();
+      if (!mensaje) return;
+
+      const messages = document.getElementById('chatbot-messages');
+
+      // Mostrar mensaje del usuario
+      const userMessage = document.createElement('div');
+      userMessage.className = 'message user';
+      userMessage.textContent = mensaje;
+      messages.appendChild(userMessage);
+
+      // Limpiar input
+      input.value = '';
+
+      // Simular respuesta del bot
+      setTimeout(() => {
+        const botMessage = document.createElement('div');
+        botMessage.className = 'message bot';
+
+        let respuesta = 'No entendí tu pregunta. ¿Puedes reformularla?';
+
+        if (mensaje.toLowerCase().includes('economía') || mensaje.toLowerCase().includes('ahorro')) {
+          respuesta = 'Una buena estrategia económica incluye ahorrar un 20% y diversificar tus ingresos.';
+        } else if (mensaje.toLowerCase().includes('estudios') || mensaje.toLowerCase().includes('carrera')) {
+          respuesta = 'Establece metas claras, como terminar tu carrera y tomar cursos complementarios.';
+        } else if (mensaje.toLowerCase().includes('servicio') || mensaje.toLowerCase().includes('social')) {
+          respuesta = 'Puedes involucrarte en voluntariados o proyectos comunitarios para generar impacto.';
+        }
+
+        botMessage.textContent = respuesta;
+        messages.appendChild(botMessage);
+        messages.scrollTop = messages.scrollHeight;
+      }, 500);
+    }
+  </script>
+
+</body>
+</html>
+<h2>📝 Guardar Proyecto de Vida</h2>
+<section>
+  <form id="vidaForm">
+    <label>Nombre: asdghjadasdjasd <input type="text" name="nombre" required></label><br><br>
+    <label>Meta Académica: ser inge  <input type="text" name="academica" required></label><br><br>
+    <label>Estrategia Económica: 2 dolares <input type="text" name="economica" required></label><br><br>
+    <label>Servicio Social: patear gringos <input type="text" name="social" required></label><br><br>
+    <button type="submit">Guardar</button>
+  </form>
+  <p id="respuesta"></p>
+</section>
+
+<script>
+  document.getElementById('vidaForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const data = Object.fromEntries(new FormData(e.target).entries());
+    
+    const res = await fetch('/guardar', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    });
+
+    const resultado = await res.json();
+    document.getElementById('respuesta').textContent = resultado.mensaje;
+    e.target.reset();
+  });
+</script>
+<main>
+    <h2 id="link-economico" onclick="toggle('economico')">💰 Estrategias Económicas</h2>
+    <h2 id="link-estudios" onclick="toggle('estudios')">📚 Planes de Estudio</h2>
+    <h2 id="link-social" onclick="toggle('social')">🤝 Servicios Sociales</h2>    
+</main>
+<header>
+    <nav style="background:#fff; padding:10px; text-align:center;">
+        <a href="https://www.google.com/search?client=opera-gx&sa=X&sca_esv=7d47c209775424ca&q=Fútbol+Club+Barcelona&stick=H4sIAAAAAAAAAONgVuLQz9U3yChLL3nEaMwt8PLHPWEprUlrTl5jVOHiCs7IL3fNK8ksqRQS42KDsnikuLjgmngWsYq5Hd5VkpSfo-CcU5qk4JRYlJyak5-XCADVUHUFWwAAAA&ved=2ahUKEwiIttuNgYuNAxVERjABHXTGJlEQw8AMegQILRAE&biw=1879&bih=956&dpr=1">Económico</a> |
+        <a href="#link-estudios">Estudios</a> |
+        <a href="#link-social">Social</a> |
+        <a href="#vidaForm">Guardar Proyecto</a>
+      </nav>      
+</header>
