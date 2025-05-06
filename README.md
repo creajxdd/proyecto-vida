@@ -1,7 +1,6 @@
-# Nombre del Proyecto
+# Proyecto
 
-Descripción breve de lo que hace el proyecto.
-
+Tarea 
 ## Instalación
 
 1. Clona el repositorio:
